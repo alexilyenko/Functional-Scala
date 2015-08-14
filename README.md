@@ -1,7 +1,7 @@
 Functional Programming Principles in Scala
 =====================
 
-Code for programming assignments in Scal from the Coursera course, Functional Programming Principles in Scala.
+Code for programming assignments in Scala from the Coursera course, Functional Programming Principles in Scala.
 
 Week 1 - Functions & Evaluations
 --------------------------------
