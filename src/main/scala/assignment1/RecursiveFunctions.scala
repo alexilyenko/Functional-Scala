@@ -6,8 +6,6 @@ import scala.language.postfixOps
 object RecursiveFunctions {
 
   /**
-   * Exercise 1
-   *
    * The following pattern of numbers is called Pascal’s triangle.
    *     1
    *    1 1
@@ -28,8 +26,6 @@ object RecursiveFunctions {
   }
 
   /**
-   * Exercise 2
-   *
    * Recursive function which verifies the balancing of parentheses in a string represented by List of Chars
    */
   def balance(chars: List[Char]): Boolean = {
@@ -47,8 +43,6 @@ object RecursiveFunctions {
   }
 
   /**
-   * Exercise 3
-   *
    * Recursive function that counts how many different ways you can make change for an amount, given a list of
    * coin denominations. For example, there are 3 ways to give change for 4 if you have coins with denomination 1
    * and 2: 1+1+1+1, 1+1+2, 2+2.
