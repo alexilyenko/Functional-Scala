@@ -24,14 +24,13 @@ class FunctionalSetSuite extends FunSuite {
     val s7 = (elem: Int) => (-1001 to -999).contains(elem)
   }
 
-  test("singletonSet(1) contains 1") {
-
+  test("singletonSet of 1 contains 1") {
     new TestSets {
       assert(contains(s1, 1), "Singleton")
     }
   }
 
-  test("union contains all elements") {
+  test("union contains all elements from both sets") {
     new TestSets {
       val s = union(s1, s2)
       assert(contains(s, 1), "Union 1")
@@ -40,7 +39,7 @@ class FunctionalSetSuite extends FunSuite {
     }
   }
 
-  test("intersect contains only intersecting elements") {
+  test("intersect contains only intersecting elements from both sets") {
     new TestSets {
       val s = intersect(s4, s5)
       assert(contains(s, 9), "Intersect 1")
@@ -52,7 +51,7 @@ class FunctionalSetSuite extends FunSuite {
   }
 
 
-  test("diff contains only elements from first set and not in second one") {
+  test("diff contains only elements in first set and not in second one") {
     new TestSets {
       val s = diff(s4, s5)
       assert(!contains(s, 9), "Difference 1")
@@ -74,17 +73,17 @@ class FunctionalSetSuite extends FunSuite {
     }
   }
 
-  test("forAll returns true if elements in the given set satisfy given function") {
+  test("forAll returns true if all elements in the given set satisfy given function") {
     new TestSets {
       assert(forall(s4, x => x >= 1 && x <= 12), "ForAll 1")
       assert(!forall(s4, x => x < 5), "ForAll 2")
       assert(!forall(s4, x => x % 2 == 0), "ForAll 3")
       assert(forall(s4, x => x > 0), "ForAll 4")
-      assert(!forall(s4, x => x > 11), "ForAll 4")
+      assert(!forall(s4, x => x > 11), "ForAll 5")
     }
   }
 
-  test("exists returns true if one of the numbers contained by set and satisfies second function") {
+  test("exists returns true if any number in set satisfies second function") {
     new TestSets {
       assert(exists(s4, x => x > 6), "Exists 1")
       assert(!exists(s4, x => x > 12), "Exists 2")
@@ -97,7 +96,7 @@ class FunctionalSetSuite extends FunSuite {
     }
   }
 
-  test("map returns a set transformed by applying function to a given set") {
+  test("map returns a set transformed by applying given function to a given set") {
     new TestSets {
       val set = map(elem => (1 to 5).contains(elem), x => x * 2)
       assert(contains(set, 2), "Map 1")
