@@ -11,4 +11,8 @@ Week 1 - Functions & Evaluations
 
 Week 2 - Higher Order Functions
 --------------------------------
- In progress...
+  - **Functional Set** - Pure functional set data structure with implemented methods such as singletonSet, union, contains, intersect, diff, filter, forAll, exists and map
+
+Week 3 - Data and Abstraction
+--------------------------------
+  In progress...
