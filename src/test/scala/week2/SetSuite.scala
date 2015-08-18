@@ -25,6 +25,7 @@ class SetSuite extends FunSuite {
   }
 
   test("singletonSet(1) contains 1") {
+
     new TestSets {
       assert(contains(s1, 1), "Singleton")
     }
@@ -64,7 +65,7 @@ class SetSuite extends FunSuite {
 
   test("filter contains only elements which satisfies both functions") {
     new TestSets {
-      val s = filter(s4, (x: Int) => x % 2 == 0)
+      val s = filter(s4, x => x % 2 == 0)
       assert(!contains(s, -4), "Filter 1")
       assert(contains(s, 8), "Filter 2")
       assert(contains(s, 12), "Filter 3")
@@ -73,29 +74,41 @@ class SetSuite extends FunSuite {
     }
   }
 
+  test("forAll returns true if elements in the given set satisfy given function") {
+    new TestSets {
+      assert(forall(s4, x => x >= 1 && x <= 12), "ForAll 1")
+      assert(!forall(s4, x => x < 5), "ForAll 2")
+      assert(!forall(s4, x => x % 2 == 0), "ForAll 3")
+      assert(forall(s4, x => x > 0), "ForAll 4")
+      assert(!forall(s4, x => x > 11), "ForAll 4")
+    }
+  }
+
   test("exists returns true if one of the numbers contained by set and satisfies second function") {
     new TestSets {
-      assert(exists(s4, (x: Int) => x > 6), "Exists 1")
-      assert(!exists(s4, (x: Int) => x > 12), "Exists 2")
-      assert(exists(s4, (x: Int) => x == 12), "Exists 3")
-      assert(exists(s4, (x: Int) => x == 1), "Exists 4")
-      assert(!exists(s4, (x: Int) => x < 0), "Exists 5")
-      assert(!exists(s6, (x: Int) => x > 0), "Exists 6")
-      assert(!exists(s7, (x: Int) => x > 0), "Exists 7")
-      assert(exists(s7, (x: Int) => x < 0), "Exists 8")
+      assert(exists(s4, x => x > 6), "Exists 1")
+      assert(!exists(s4, x => x > 12), "Exists 2")
+      assert(exists(s4, x => x == 12), "Exists 3")
+      assert(exists(s4, x => x == 1), "Exists 4")
+      assert(!exists(s4, x => x < 0), "Exists 5")
+      assert(!exists(s6, x => x > 0), "Exists 6")
+      assert(!exists(s7, x => x > 0), "Exists 7")
+      assert(exists(s7, x => x < 0), "Exists 8")
     }
   }
 
   test("map returns a set transformed by applying function to a given set") {
-    val set = map((elem: Int) => (1 to 5).contains(elem), (x: Int) => x * 2)
-    assert(contains(set, 2), "Map 1")
-    assert(contains(set, 4), "Map 2")
-    assert(!contains(set, 5), "Map 3")
-    assert(contains(set, 6), "Map 4")
-    assert(contains(set, 10), "Map 5")
-    assert(!contains(set, 1), "Map 6")
-    assert(!contains(set, 3), "Map 6")
-    assert(!contains(set, -5), "Map 7")
-    assert(!contains(set, 11), "Map 8")
+    new TestSets {
+      val set = map(elem => (1 to 5).contains(elem), x => x * 2)
+      assert(contains(set, 2), "Map 1")
+      assert(contains(set, 4), "Map 2")
+      assert(!contains(set, 5), "Map 3")
+      assert(contains(set, 6), "Map 4")
+      assert(contains(set, 10), "Map 5")
+      assert(!contains(set, 1), "Map 6")
+      assert(!contains(set, 3), "Map 6")
+      assert(!contains(set, -5), "Map 7")
+      assert(!contains(set, 11), "Map 8")
+    }
   }
 }
