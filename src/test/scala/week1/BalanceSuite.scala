@@ -6,6 +6,7 @@ import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class BalanceSuite extends FunSuite {
+
   import RecursiveFunctions.balance
 
   test("balance: '(if (zero? x) max (/ 1 x))' is balanced") {

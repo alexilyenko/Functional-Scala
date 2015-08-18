@@ -9,11 +9,10 @@ object SetFunctions {
    * its `contains` predicate.
    */
   type Set = Int => Boolean
-
   /**
-   * Indicates whether a set contains a given element.
+   * The bounds for `forall` and `exists` are +/- 1000.
    */
-  def contains(s: Set, elem: Int): Boolean = s(elem)
+  val bound = 1000
 
   /**
    * Returns the set of the one given element.
@@ -44,9 +43,15 @@ object SetFunctions {
   def filter(s: Set, p: Int => Boolean): Set = (x: Int) => s(x) && p(x)
 
   /**
-   * The bounds for `forall` and `exists` are +/- 1000.
+   * Returns a set transformed by applying `f` to each element of `s`.
    */
-  val bound = 1000
+  def map(s: Set, f: Int => Int): Set = (x: Int) => exists(s, (y: Int) => x == f(y))
+
+  /**
+   * Returns whether there exists a bounded integer within `s`
+   * that satisfies `p`.
+   */
+  def exists(s: Set, p: Int => Boolean): Boolean = forall(s, p)
 
   /**
    * Returns whether all bounded integers within `s` satisfy `p`.
@@ -61,15 +66,11 @@ object SetFunctions {
   }
 
   /**
-   * Returns whether there exists a bounded integer within `s`
-   * that satisfies `p`.
+   * Prints the contents of a set on the console.
    */
-  def exists(s: Set, p: Int => Boolean): Boolean = forall(s, p)
-
-  /**
-   * Returns a set transformed by applying `f` to each element of `s`.
-   */
-  def map(s: Set, f: Int => Int): Set = (x: Int) => exists(s, (y: Int) => x == f(y))
+  def printSet(s: Set) {
+    println(toString(s))
+  }
 
   /**
    * Displays the contents of a set
@@ -80,9 +81,7 @@ object SetFunctions {
   }
 
   /**
-   * Prints the contents of a set on the console.
+   * Indicates whether a set contains a given element.
    */
-  def printSet(s: Set) {
-    println(toString(s))
-  }
+  def contains(s: Set, elem: Int): Boolean = s(elem)
 }
