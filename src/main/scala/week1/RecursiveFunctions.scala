@@ -1,4 +1,4 @@
-package assignment1
+package week1
 
 import scala.annotation.tailrec
 import scala.language.postfixOps
