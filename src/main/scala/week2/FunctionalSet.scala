@@ -3,9 +3,9 @@ package week2
 import scala.annotation.tailrec
 
 /**
- * Purely Functional Sets
+ * Purely Functional Set
  */
-object SetFunctions {
+object FunctionalSet {
   /**
    * We represent a set by its characteristic function, i.e.
    * its `contains` predicate.

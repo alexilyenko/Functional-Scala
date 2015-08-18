@@ -6,9 +6,9 @@ import org.scalatest.junit.JUnitRunner
 
 
 @RunWith(classOf[JUnitRunner])
-class SetSuite extends FunSuite {
+class FunctionalSetSuite extends FunSuite {
 
-  import SetFunctions._
+  import FunctionalSet._
 
   test("contains is implemented") {
     assert(contains(x => true, 100))
