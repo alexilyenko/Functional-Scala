@@ -110,8 +110,10 @@ class FunctionalSetSuite extends FunSuite {
   }
 
   test("map boundary") {
-    val high = Array(1, 3, 4, 5, 7, 1000)
-    val low = Array(1, 3, 4, 5, 7, -1000)
+    val partialArray = (x: Int) => Array(1, 3, 4, 5, 7, x)
+
+    val high = partialArray(bound)
+    val low = partialArray(-bound)
 
     val set1 = (x: Int) => high contains x
     val set2 = (x: Int) => low contains x
