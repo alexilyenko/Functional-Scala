@@ -109,13 +109,21 @@ class FunctionalSetSuite extends FunSuite {
     assert(!contains(set, 11), "Map 8")
   }
 
-  test("map boundary checking") {
-    val set = map(elem => Array(1, 3, 4, 5, 7, 1000) contains elem, x => x - 1)
-    assert(FunctionalSet.toString(set) === FunctionalSet.toString(elem => Array(0, 2, 3, 4, 6, 999) contains elem),
-      "Map boundaries 1")
+  test("map boundary") {
+    val set1 = (x: Int) => Array(1, 3, 4, 5, 7, 1000) contains x
+    val set2 = (x: Int) => Array(1, 3, 4, 5, 7, -1000) contains x
+    val add = (x: Int) => x + 1
+    val sub = (x: Int) => x - 1
+    assert(FunctionalSet.toString(map(set1, sub)) === FunctionalSet.toString(x => Array(0, 2, 3, 4, 6, 999)
+      contains x), "Map boundaries 1")
 
-    val set2 = map(elem => Array(1, 3, 4, 5, 7, -1000) contains elem, x => x + 1)
-    assert(FunctionalSet.toString(set2) === FunctionalSet.toString(elem => Array(2, 4, 5, 6, 8, -999) contains elem),
-      "Map boundaries 2")
+    assert(FunctionalSet.toString(map(set2, add)) === FunctionalSet.toString(x => Array(2, 4, 5, 6, 8, -999)
+      contains x), "Map boundaries 2")
+
+    assert(FunctionalSet.toString(map(set1, add)) === FunctionalSet.toString(x => Array(2, 4, 5, 6, 8)
+      contains x), "Map boundaries 3")
+
+    assert(FunctionalSet.toString(map(set2, sub)) === FunctionalSet.toString(x => Array(0, 2, 3, 4, 6)
+      contains x), "Map boundaries 4")
   }
 }
