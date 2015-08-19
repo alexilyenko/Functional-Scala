@@ -61,7 +61,7 @@ object FunctionalSet {
   def forall(s: Set, p: Int => Boolean): Boolean = {
     @tailrec
     def iter(a: Int): Boolean = {
-      if (a == bound) true
+      if (a > bound) true
       else if (contains(s, a)) p(a) && iter(a + 1)
       else iter(a + 1)
     }
