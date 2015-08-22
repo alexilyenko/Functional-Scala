@@ -78,7 +78,7 @@ object FunctionalSet {
   /**
    * Displays the contents of a set
    */
-  override def toString(s: Set): String = {
+  def toString(s: Set): String = {
     val xs = for (i <- -bound to bound if contains(s, i)) yield i
     xs.mkString("{", ",", "}")
   }
