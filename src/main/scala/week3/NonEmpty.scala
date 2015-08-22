@@ -1,6 +1,6 @@
 package week3
 
-import week3.utils.{Cons, TweetList, Tweet}
+import week3.utils.{Cons, Tweet, TweetList}
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
 
@@ -18,11 +18,6 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
     else this
   }
 
-  override def remove(tw: Tweet): TweetSet =
-    if (tw.text < elem.text) new NonEmpty(elem, left.remove(tw), right)
-    else if (elem.text < tw.text) new NonEmpty(elem, left, right.remove(tw))
-    else left.union(right)
-
   override def foreach(f: Tweet => Unit): Unit = {
     f(elem)
     left.foreach(f)
@@ -35,14 +30,6 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   override def union(that: TweetSet): TweetSet = left.union(right.union(that.incl(elem)))
 
   /**
-   * Returns the tweet from this set which has the greatest retweet count.
-   */
-  override def mostRetweeted: Tweet = mostRetweetedAcc(elem)
-
-  override def mostRetweetedAcc(max: Tweet): Tweet =
-    left.mostRetweetedAcc(right.mostRetweetedAcc(if (elem > max) elem else max))
-
-  /**
    * Returns a list containing all tweets of this set, sorted by retweet count
    * in descending order. In other words, the head of the resulting list should
    * have the highest retweet count.
@@ -52,4 +39,17 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
    * and be implemented in the subclasses?
    */
   override def descendingByRetweet: TweetList = new Cons(mostRetweeted, remove(mostRetweeted).descendingByRetweet)
+
+  override def remove(tw: Tweet): TweetSet =
+    if (tw.text < elem.text) new NonEmpty(elem, left.remove(tw), right)
+    else if (elem.text < tw.text) new NonEmpty(elem, left, right.remove(tw))
+    else left.union(right)
+
+  /**
+   * Returns the tweet from this set which has the greatest retweet count.
+   */
+  override def mostRetweeted: Tweet = mostRetweetedAcc(elem)
+
+  override def mostRetweetedAcc(max: Tweet): Tweet =
+    left.mostRetweetedAcc(right.mostRetweetedAcc(if (elem > max) elem else max))
 }

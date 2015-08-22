@@ -1,6 +1,6 @@
 package week3
 
-import week3.utils.{TweetList, Tweet}
+import week3.utils.{Tweet, TweetList}
 
 
 /**

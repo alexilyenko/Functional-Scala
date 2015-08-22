@@ -69,11 +69,6 @@ object FunctionalSet {
   }
 
   /**
-   * Indicates whether a set contains a given element.
-   */
-  def contains(s: Set, elem: Int): Boolean = s(elem)
-
-  /**
    * Prints the contents of a set on the console.
    */
   def printSet(s: Set) {
@@ -83,8 +78,13 @@ object FunctionalSet {
   /**
    * Displays the contents of a set
    */
-  def toString(s: Set): String = {
+  override def toString(s: Set): String = {
     val xs = for (i <- -bound to bound if contains(s, i)) yield i
     xs.mkString("{", ",", "}")
   }
+
+  /**
+   * Indicates whether a set contains a given element.
+   */
+  def contains(s: Set, elem: Int): Boolean = s(elem)
 }
