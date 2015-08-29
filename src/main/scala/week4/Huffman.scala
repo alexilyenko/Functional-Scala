@@ -81,7 +81,7 @@ object Huffman {
    */
   def combine(trees: List[CodeTree]): List[CodeTree] =
     if (trees.size < 2) trees
-    else makeCodeTree(trees head, trees.tail head) :: trees.tail.tail
+    else makeCodeTree(trees head, trees.tail head) :: trees.tail.tail sortWith (weight(_) < weight(_))
 
   /**
    * Calls the two functions until the list of code trees contains only one single tree, and then return
