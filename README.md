@@ -22,5 +22,8 @@ Week 3 - Data and Abstraction
 
 Week 4 - Types and Pattern Matching
 --------------------------------
-
+ - **Huffman Coding** - Data structure that implements efficient compression algorithm used to compress lists of characters
+ 
+Weeks 5-6 - Collections
+--------------------------------
 In progress...
