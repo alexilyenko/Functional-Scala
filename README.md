@@ -26,4 +26,8 @@ Week 4 - Types and Pattern Matching
  
 Weeks 5-6 - Collections
 --------------------------------
+ - **Anagrams** - Function-based data structure which solves combinatorial problem of finding all the anagrams of a given sentence recursively using the Scala Collections API and for-comprehensions.
+
+Week 7 - Lazy Evaluation
+--------------------------------
 In progress...
