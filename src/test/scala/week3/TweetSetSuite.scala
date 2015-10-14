@@ -78,8 +78,4 @@ class TweetSetSuite extends FunSuite {
       assert(trends.head.user == "a" || trends.head.user == "b")
     }
   }
-
-  test("trending tweets") {
-    GoogleVsApple.trending.head.retweets === 321
-  }
 }
