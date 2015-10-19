@@ -30,4 +30,5 @@ Weeks 5-6 - Collections
 
 Week 7 - Lazy Evaluation
 --------------------------------
-In progress...
+ - **Bloxorz** - Scala class represented famous flash game [Bloxorz](http://www.coolmath-games.com/0-bloxorz). Its objective is simple: you must navigate your rectangular block to the hole at the end of the board, by rolling it, in the fewest number of moves possible.
+ - **Solver** - Data structure that returns the exact sequence of moves in order to reach the goal position by block and gets the shortest possible way from that sequence
